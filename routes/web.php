@@ -14,8 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    Mail::to('foo@bar.com')->send(new Congrats);
-
-    return view('welcome');
-});
+Route::get('/', 'App\Http\Controllers\IndexController@index');
