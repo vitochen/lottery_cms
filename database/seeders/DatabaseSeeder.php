@@ -2,8 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Event;
+use App\Models\Member;
+use App\Models\Price;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +24,17 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        $this->init();
+        Member::factory(60000)->create();        
+        Event::factory(1)->create();
+        $this->call(PriceSeeder::class);
+    }
+
+    private function init()
+    {       
+        Member::truncate();
+        Event::truncate();
+        Price::truncate();
     }
 }
