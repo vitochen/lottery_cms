@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\Congrats;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    Mail::to('foo@bar.com')->send(new Congrats);
+
     return view('welcome');
 });
