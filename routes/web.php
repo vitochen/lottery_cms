@@ -1,6 +1,8 @@
 <?php
 
-use App\Mail\Congrats;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\PriceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +16,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\IndexController@index');
+Route::controller(IndexController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+});
+
+Route::controller(EventController::class)
+        ->name('event.')
+        ->prefix('event')
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/data', 'data')->name('data');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/create', 'store');
+        });
+
+Route::controller(MemberController::class)
+        ->name('member.')
+        ->prefix('member')
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/', 'data')->name('data');
+        });
+
+Route::controller(PriceController::class)
+        ->name('member.')
+        ->prefix('member')
+        ->group(function () {
+            Route::get('/', 'create')->name('create');
+            Route::get('/', 'store');
+        });
