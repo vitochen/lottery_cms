@@ -43,5 +43,5 @@ Route::controller(PriceController::class)
         ->prefix('member')
         ->group(function () {
             Route::get('/', 'create')->name('create');
-            Route::get('/', 'store');
+            Route::post('/', 'store');
         });
