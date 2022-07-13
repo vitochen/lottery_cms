@@ -10,6 +10,7 @@ abstract class BaseController
     use BaseDatatable;
 
     protected $repos;
+    protected $repository;
     protected $route;
     protected $view;
     protected $lang;

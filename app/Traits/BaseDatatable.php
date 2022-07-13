@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use Illuminate\Support\Facades\Route;
+
 trait BaseDatatable {
     public function prepareQueryTable($query) {
         return datatables()->eloquent($query);
