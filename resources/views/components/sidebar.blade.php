@@ -18,10 +18,11 @@
         </li>
         </li>
 
-        <li class="nav-item {{ (request()->is('winner*')) ? 'active' : '' }}">
-          <a class="nav-link" href="#">
+        <li class="nav-item">
+          <a class="nav-link {{ (request()->is('member*')) ? 'active' : '' }}" 
+            href="{{ route('member.index')}}">
             <i class="fas fa-user-check"></i>
-            <span>Winner</span>
+            <span>Member</span>
           </a>
         </li>
       </ul>      

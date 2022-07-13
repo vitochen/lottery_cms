@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PriceController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,13 +36,13 @@ Route::controller(MemberController::class)
         ->prefix('member')
         ->group(function () {
             Route::get('/', 'index')->name('index');
-            Route::get('/', 'data')->name('data');
+            Route::get('/data', 'data')->name('data');
         });
 
 Route::controller(PriceController::class)
-        ->name('member.')
-        ->prefix('member')
+        ->name('price.')
+        ->prefix('price')
         ->group(function () {
             Route::get('/', 'create')->name('create');
-            Route::post('/', 'store');
+            Route::post('/data', 'store');
         });
