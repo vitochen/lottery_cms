@@ -9,5 +9,7 @@ return [
     'edit' => 'Edit',
     'delete' => 'Delete',
     
+    'close' => 'Close',
+    'cancel' => 'Cancel',
     'submit' => 'Submit',
 ];

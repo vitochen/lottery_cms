@@ -25,12 +25,6 @@
             </table>
         </div>
     </div>
-
-    <div class="modal fade" id="question_modal">
-        <div class="modal-dialog">
-            <div class="modal-content" id="question_content"></div>
-        </div>
-    </div>
 @endsection
 
 @section('footer_script')

@@ -43,7 +43,7 @@ class EventController extends BaseController
 
         $table->addColumn('lottery_status', function ($model) use ($statusBtnStyle) {
             $style = $statusBtnStyle[$model->lottery_status];
-            $route = route('home');
+            $route = route('event.showPrice', ['id' => $model->id]);
             $name = Events::getStatusName($model->lottery_status);
             
             return view('components.btnCol', compact('style', 'route', 'name'));
@@ -52,5 +52,12 @@ class EventController extends BaseController
         $table = $this->regularColumnPush($table, $this->getRoute());
 
         return $this->makeDataTable($table, ['lottery_status']);
+    }
+
+    public function showPrice($id)
+    {
+        $event = $this->repos->firstOf('id', $id);
+
+        return view('event.priceModal', compact('event'));
     }
 }

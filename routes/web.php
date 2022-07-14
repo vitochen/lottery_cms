@@ -29,6 +29,8 @@ Route::controller(EventController::class)
             Route::get('/data', 'data')->name('data');
             Route::get('/create', 'create')->name('create');
             Route::post('/create', 'store');
+
+            Route::get('/{id}/histroy', 'showPrice')->name('showPrice');
         });
 
 Route::controller(MemberController::class)
