@@ -5,15 +5,15 @@ namespace App\Traits;
 use Illuminate\Support\Facades\Route;
 
 trait BaseDatatable {
-    public function prepareQueryTable($query) {
+    protected function prepareQueryTable($query) {
         return datatables()->eloquent($query);
     }
 
-    private function prepareDataTable($collection) {
+    protected function prepareDataTable($collection) {
         return datatables()->of($collection);
     }
 
-    private function regularColumnPush($table, $routeName) {
+    protected function regularColumnPush($table, $routeName) {
         if (Route::has($routeName . '.show'))
             $table = $table->addColumn('info_col', function ($model) use ($routeName) {
                 $name = $model->name ?? $model->id;
@@ -39,7 +39,7 @@ trait BaseDatatable {
         return $table;
     }
 
-    private function makeDataTable($table, $customRawCols = [])
+    protected function makeDataTable($table, $customRawCols = [])
     {
         $raw = array_merge(['info_col', 'edit_col', 'del_col'], $customRawCols);
 

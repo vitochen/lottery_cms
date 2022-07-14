@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants\Button;
+use App\Constants\Event as ConstantsEvent;
 use App\Models\Event;
 use App\Models\Member;
 use App\Repositories\Events;
@@ -21,10 +23,14 @@ class LabController extends Controller
 
     public function lab()
     {
-        $events = new Members();
 
-        $event = $events->firstOf('id', 1);
+        $a = ConstantsEvent::$statusBtnStyle;
+        $b = Button::$OUTLINE_STYLE;
 
-        dd($event);
+        $res = array_map(function($key) use ($b){ return $b[$key]; }, $a);
+
+        // $res = array_map(null, $a, $b);
+
+        dd($res);
     }
 }
