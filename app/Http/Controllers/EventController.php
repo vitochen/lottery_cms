@@ -60,4 +60,20 @@ class EventController extends BaseController
 
         return view('event.priceModal', compact('event'));
     }
+
+    public function showPool($id)
+    {
+        $event = $this->repos->firstOf('id', $id);
+
+        $members = $event->lotteryPool;
+
+        $title = $event->name . '#' . __('event.pool');
+
+        $backLink = view('components.linkCol', [
+            'route' => route('event.showPrice', ['id' => $event->id]), 
+            'name' => '< ' . __('event.lottery_history')
+        ])->render();
+
+        return view('event.memberModal', compact('title', 'members', 'backLink'));
+    }
 }

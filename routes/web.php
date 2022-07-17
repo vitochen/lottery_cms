@@ -31,6 +31,7 @@ Route::controller(EventController::class)
             Route::post('/create', 'store');
 
             Route::get('/{id}/histroy', 'showPrice')->name('showPrice');
+            Route::get('/{id}/pool', 'showPool')->name('showPool');
         });
 
 Route::controller(MemberController::class)

@@ -3,6 +3,12 @@
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 <div class="modal-body">
+    @lang('event.pool_count')
+    @include('components.linkCol', [
+        'route' => route('event.showPool', ['id' => $event->id]), 
+        'name' => $event->lotteryPool()->count()
+    ])
+
     <table class="table">
         <thead>
             <tr>

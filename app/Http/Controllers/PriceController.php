@@ -29,8 +29,13 @@ class PriceController extends Controller
 
         $members = $price->winners;
 
-        $event = $price->event;
+        $title = $price->event->name . '>' . $price->name . '#' . __('event.price_history');
 
-        return view('event.memberModal', compact('event', 'price', 'members'));
+        $backLink = view('components.linkCol', [
+            'route' => route('event.showPrice', ['id' => $price->event->id]), 
+            'name' => '< ' . __('event.lottery_history')
+        ])->render();
+
+        return view('event.memberModal', compact('title', 'members', 'backLink'));
     }
 }

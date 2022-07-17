@@ -1,14 +1,11 @@
 <div class="modal-header">
     <h4 class="modal-title">
-        {{ $event->name }} > {{ $price->name}} # @lang('event.price_history')
+        {{ $title }}        
     </h4>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 <div class="modal-body">
-    @include('components.linkCol', [
-        'route' => route('event.showPrice', ['id' => $event->id]), 
-        'name' => '< ' . __('event.lottery_history')
-    ])
+    {!! $backLink ?? '' !!}    
 
     <table class="table">
         <thead>

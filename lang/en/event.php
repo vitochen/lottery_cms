@@ -15,4 +15,6 @@ return [
 
     'reveal' => 'Reveal',
     
+    'pool' => 'Draw Pool',
+    'pool_count' => 'Pool count: '
 ];
