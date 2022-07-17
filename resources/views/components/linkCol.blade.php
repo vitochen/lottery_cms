@@ -1,8 +1,7 @@
 <a href="#"
-   class="show_table"
+   class="show_modal"
    data-type="Robot"
-   data-name="{{ $name }}"
    data-action=" {{ $route }}"
 >
-    {{ $count }}
+    {{ $name }}
 </a>

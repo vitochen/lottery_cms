@@ -46,4 +46,5 @@ Route::controller(PriceController::class)
         ->prefix('price')
         ->group(function () {
             Route::get('/{id}/draw', 'reveal')->name('reveal');
+            Route::get('/{id}/winner', 'winner')->name('winner');
         });

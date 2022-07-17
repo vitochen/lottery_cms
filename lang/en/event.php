@@ -11,6 +11,7 @@ return [
     'runed_lottery' => 'Finished',
 
     'lottery_history' => 'Lottery History',
+    'price_history' => 'Price History',
 
     'reveal' => 'Reveal',
     

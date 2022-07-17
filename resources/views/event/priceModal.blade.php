@@ -15,7 +15,16 @@
             @foreach ($event->prices as $price)
             <tr>
                 <th>{{ $price->name }}</th>
-                <td>{{ $price->quantity }}</td>
+                <td>
+                    @if ($price->revealed_at)
+                        @include('components.linkCol', [
+                            'route' => route('price.winner', ['id' => $price->id]), 
+                            'name' => $price->quantity
+                        ])
+                    @else
+                        {{ $price->quantity }}
+                    @endif
+                </td>
                 <td>
                     @if ($price->revealed_at)
                         {{ $price->revealed_at}}

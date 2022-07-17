@@ -22,4 +22,15 @@ class PriceController extends Controller
 
         return view('event.priceModal', compact('event'));
     }
+
+    public function winner($id)
+    {
+        $price = $this->prices->firstOf('id', $id);
+
+        $members = $price->winners;
+
+        $event = $price->event;
+
+        return view('event.memberModal', compact('event', 'price', 'members'));
+    }
 }
