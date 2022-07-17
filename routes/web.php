@@ -45,6 +45,5 @@ Route::controller(PriceController::class)
         ->name('price.')
         ->prefix('price')
         ->group(function () {
-            Route::get('/', 'create')->name('create');
-            Route::post('/data', 'store');
+            Route::get('/{id}/draw', 'reveal')->name('reveal');
         });

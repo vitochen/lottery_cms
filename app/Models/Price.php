@@ -12,4 +12,14 @@ class Price extends Model
     {
         return isset($this->revealed_at);
     }
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
+
+    public function winners()
+    {
+        return $this->belongsToMany(Member::class, 'member_price_relation');
+    }
 }

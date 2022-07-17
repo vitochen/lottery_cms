@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('member_price_relation', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->foreignId('member_id');
+            $table->foreignId('price_id');
         });
     }
 

@@ -26,13 +26,29 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->init();
-        Member::factory(60000)->create();        
-        Event::factory(1)->create();
+        $membersCollection = Member::factory(60000)->make();        
+        $chunks = $membersCollection->chunk(500);
+        foreach ($chunks as $chunk) {
+            Member::insert($chunk->toArray());
+        }
+
+        $event = Event::factory(1)->create()->first();
+
+        //give default event have initial lottery pool
+        $members = Member::all();
+        
+        $modelChunks = $members->chunk(1000);        
+        foreach ($modelChunks as $chunk) {
+            $event->memberPool()->attach($chunk);
+        }
+
         $this->call(PriceSeeder::class);
     }
 
     private function init()
     {       
+        DB::table('member_price_relation')->truncate();
+        DB::table('member_event_relation')->truncate();
         Member::truncate();
         Event::truncate();
         Price::truncate();

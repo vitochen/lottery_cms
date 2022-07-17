@@ -10,5 +10,8 @@ return [
     'runing_lottery' => 'Running',
     'runed_lottery' => 'Finished',
 
-    'lottery_history' => 'Lottery History'
+    'lottery_history' => 'Lottery History',
+
+    'reveal' => 'Reveal',
+    
 ];

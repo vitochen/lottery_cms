@@ -16,7 +16,17 @@
             <tr>
                 <th>{{ $price->name }}</th>
                 <td>{{ $price->quantity }}</td>
-                <td>{{ $price->revealed_at }}</td>
+                <td>
+                    @if ($price->revealed_at)
+                        {{ $price->revealed_at}}
+                    @else
+                        @include('components.btnCol', [
+                            'style' => App\Constants\Button::$STYLE['warning'], 
+                            'route' => route('price.reveal', ['id' => $price->id]), 
+                            'name' => __('event.reveal')
+                        ])
+                    @endif
+                </td>
             </tr>
             @endforeach
         </tbody>

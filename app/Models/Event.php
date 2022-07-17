@@ -28,9 +28,27 @@ class Event extends Model
             return ConstantsEvent::RUNNING_KEY;
         }
     }
+
+    public function lotteryPool()
+    {
+        $winners = $this->load('prices.winners')
+                    ->prices
+                    ->pluck('winners.*.id')
+                    ->collapse()
+                    ->unique()
+                    ->toArray();
+
+        return $this->belongsToMany(Member::class, 'member_event_relation')
+                    ->whereNotIn('id', $winners);
+    }
     
     public function prices()
     {
         return $this->hasMany(Price::class);
+    }
+
+    public function memberPool()
+    {
+        return $this->belongsToMany(Member::class, 'member_event_relation');
     }
 }
