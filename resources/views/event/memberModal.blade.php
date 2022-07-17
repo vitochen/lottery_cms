@@ -25,6 +25,8 @@
             @endforeach
         </tbody>
     </table>
+
+    {{ $members->links('event.pagnateLink') }}
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('general.close')</button>

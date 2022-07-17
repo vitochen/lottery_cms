@@ -27,9 +27,9 @@ class PriceController extends Controller
     {
         $price = $this->prices->firstOf('id', $id);
 
-        $members = $price->winners;
+        $members = $price->winners()->simplePaginate(15);
 
-        $title = $price->event->name . '>' . $price->name . '#' . __('event.price_history');
+        $title = $price->event->name . ' > ' . $price->name . ' # ' . __('event.price_history');
 
         $backLink = view('components.linkCol', [
             'route' => route('event.showPrice', ['id' => $price->event->id]), 

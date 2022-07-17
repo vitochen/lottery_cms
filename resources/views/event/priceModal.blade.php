@@ -1,13 +1,15 @@
 <div class="modal-header">
-    <h4 class="modal-title">{{ $event->name }}# @lang('event.lottery_history')</h4>
+    <h4 class="modal-title">{{ $event->name }} # @lang('event.lottery_history')</h4>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 <div class="modal-body">
-    @lang('event.pool_count')
-    @include('components.linkCol', [
-        'route' => route('event.showPool', ['id' => $event->id]), 
-        'name' => $event->lotteryPool()->count()
-    ])
+    <div class="float-end">
+        @lang('event.pool_count')
+        @include('components.linkCol', [
+            'route' => route('event.showPool', ['id' => $event->id]), 
+            'name' => $event->lotteryPool()->count()
+        ])
+    </div>
 
     <table class="table">
         <thead>

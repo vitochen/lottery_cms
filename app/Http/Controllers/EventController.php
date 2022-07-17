@@ -65,9 +65,9 @@ class EventController extends BaseController
     {
         $event = $this->repos->firstOf('id', $id);
 
-        $members = $event->lotteryPool;
-
-        $title = $event->name . '#' . __('event.pool');
+        $members = $event->lotteryPool()->simplePaginate(15);
+        
+        $title = $event->name . ' # ' . __('event.pool');
 
         $backLink = view('components.linkCol', [
             'route' => route('event.showPrice', ['id' => $event->id]), 
