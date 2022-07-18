@@ -32,6 +32,7 @@ Route::controller(EventController::class)
 
             Route::get('/{id}/histroy', 'showPrice')->name('showPrice');
             Route::get('/{id}/pool', 'showPool')->name('showPool');
+            Route::get('/{id}/lottery_count', 'lotteryCount')->name('lotteryCount');
         });
 
 Route::controller(MemberController::class)

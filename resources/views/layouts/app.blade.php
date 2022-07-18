@@ -194,15 +194,32 @@
     </script>
 
     <script>
+        function refreshDelayView() {
+            $('.load_delay').each(function() {
+                var ele = this;
+                $.ajax({
+                    url: $(this).data('action'),
+                    type: 'GET',
+                    success: function (result) {
+                        $(ele).html(result);
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(errorThrown);
+                    }
+                });
+            });
+        }
+
         $(document).on('click', '.show_modal', function () {
             $.ajax({
                 url: $(this).data('action'),
                 type: 'GET',
-                header: {},
                 success: function (result) {
                     $("#modal_content").html(result);
 
                     $("#modal").modal("show");
+
+                    refreshDelayView();
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     console.log(errorThrown);

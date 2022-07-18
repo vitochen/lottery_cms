@@ -5,10 +5,10 @@
 <div class="modal-body">
     <div class="float-end">
         @lang('event.pool_count')
-        @include('components.linkCol', [
-            'route' => route('event.showPool', ['id' => $event->id]), 
-            'name' => $event->lottery_pool_count
-        ])
+        <span class="load_delay" data-action={{ route('event.lotteryCount', ['id' => $event->id]) }}>
+        ...
+        </span>
+        
     </div>
 
     <table class="table">

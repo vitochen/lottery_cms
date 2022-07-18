@@ -76,4 +76,14 @@ class EventController extends BaseController
 
         return view('event.memberModal', compact('title', 'members', 'backLink'));
     }
+
+    public function lotteryCount($id)
+    {   
+        $event = $this->repos->firstOf('id', $id);
+
+        return view('components.linkCol', [
+            'route' => route('event.showPool', ['id' => $event->id]), 
+            'name' => $event->lottery_pool_count
+        ]);
+    }
 }
