@@ -7,7 +7,7 @@
         @lang('event.pool_count')
         @include('components.linkCol', [
             'route' => route('event.showPool', ['id' => $event->id]), 
-            'name' => $event->lotteryPool()->count()
+            'name' => $event->lottery_pool_count
         ])
     </div>
 

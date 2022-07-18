@@ -25,7 +25,7 @@ class Prices extends BaseRepository {
 
         $price->save();
 
-        $price = $m::find($id);
+        $price->refresh();
 
         return $price;
     }

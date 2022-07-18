@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Constants\Event as ConstantsEvent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 
 class Event extends Model
 {
@@ -29,17 +30,42 @@ class Event extends Model
         }
     }
 
+    public function getLotteryPoolCountAttribute()
+    {
+        return $this->lotteryPoolMemberIds()->count();
+    }
+
+    public function winnersMemberIds()
+    {
+        return $this->load('prices.winners')
+            ->prices
+            ->pluck('winners.*.id')
+            ->collapse();
+    }
+
+    public function poolMemberIds()
+    {
+        return DB::table('member_event_relation')
+            ->select('member_id')
+            ->where('event_id', $this->id)
+            ->get()
+            ->pluck('member_id');
+    }
+
+    public function lotteryPoolMemberIds()
+    {
+        $winnersId = $this->winnersMemberIds();
+
+        $poolsId = $this->poolMemberIds();
+
+        return $poolsId->diff($winnersId);
+    }
+
     public function lotteryPool()
     {
-        $winners = $this->load('prices.winners')
-                    ->prices
-                    ->pluck('winners.*.id')
-                    ->collapse()
-                    ->unique()
-                    ->toArray();
+        $winners = $this->winnersMemberIds();
 
-        return $this->belongsToMany(Member::class, 'member_event_relation')
-                    ->whereNotIn('id', $winners);
+        return $this->memberPool()->whereIntegerNotInRaw('id', $winners);
     }
     
     public function prices()

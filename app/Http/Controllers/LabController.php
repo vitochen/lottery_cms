@@ -10,7 +10,7 @@ use App\Repositories\Events;
 use App\Repositories\Members;
 use App\Repositories\Prices;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class LabController extends Controller
@@ -23,14 +23,21 @@ class LabController extends Controller
 
     public function lab()
     {
+        // $event = Event::find(1);
 
-        $a = ConstantsEvent::$statusBtnStyle;
-        $b = Button::$OUTLINE_STYLE;
+        // $winners = $event->winnersMemberIds();
 
-        $res = array_map(function($key) use ($b){ return $b[$key]; }, $a);
+        // $pool = $event->poolMemberIds();
 
-        // $res = array_map(null, $a, $b);
+        // $diff = $event->lotteryPoolMemberIds();
 
-        dd($res);
+        // $member = $event->lotteryPool();
+
+        // $pool = $event->memberPool()
+        //         ->select('id')
+        //         ->pluck('id')
+        //         ;
+
+        // return response()->json( $member->count());
     }
 }
