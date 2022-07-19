@@ -84,5 +84,10 @@
     function deletePriceEle(key) {
         $('#'+key).remove();
     }
+
+    $("#getFile").change(function() {
+        filename = this.files[0].name;
+        $('#upload_filename').val(filename);
+    });
 </script>
 @endsection

@@ -8,7 +8,7 @@
 @if ($message = Session::get('success'))
 <div class="alert alert-success alert-dismissable margin5">
     <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
-    <strong>Success:</strong> {{ $message }} 123123
+    <strong>Success:</strong> {{ $message }}
 </div>
 @endif
 

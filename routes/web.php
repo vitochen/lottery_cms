@@ -7,6 +7,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PriceController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +53,7 @@ Route::controller(EventMemberController::class)
         ->prefix('event')
         ->group(function () {
             Route::get('/{id}/member/create', 'create')->name('create');
-            Route::post('/{id}/member/create', 'store');
+            Route::post('/{id}/member/import', 'import')->name('import');
         });
 
 Route::controller(MemberController::class)
@@ -70,4 +71,8 @@ Route::controller(PriceController::class)
             Route::get('/{id}/draw', 'reveal')->name('reveal');
             Route::get('/{id}/winner', 'winner')->name('winner');
         });
+
+Route::get('pool_samplefile', function() {
+    return Storage::download('public/pool_import_sample.xlsx');
+})->name('download.pool_import_sample');
 
