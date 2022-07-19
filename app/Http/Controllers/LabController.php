@@ -11,6 +11,7 @@ use App\Repositories\Members;
 use App\Repositories\Prices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
 class LabController extends Controller
@@ -23,21 +24,6 @@ class LabController extends Controller
 
     public function lab()
     {
-        // $event = Event::find(1);
-
-        // $winners = $event->winnersMemberIds();
-
-        // $pool = $event->poolMemberIds();
-
-        // $diff = $event->lotteryPoolMemberIds();
-
-        // $member = $event->lotteryPool();
-
-        // $pool = $event->memberPool()
-        //         ->select('id')
-        //         ->pluck('id')
-        //         ;
-
-        // return response()->json( $member->count());
+        dd(request()->segment(1));
     }
 }

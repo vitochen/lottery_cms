@@ -33,13 +33,6 @@ class EventController extends BaseController
         ]);
     }
 
-    public function create()
-    {
-        $toggle = Event::CREATING_EVENT;
-
-        return view("{$this->getRoute()}.create", compact('toggle'));
-    }
-
     public function store()
     {
         $req = $this->getStoreRequest();
@@ -50,9 +43,8 @@ class EventController extends BaseController
 
         $model = $this->repos->createModel($data);
 
-        $toggle = Event::CREATING_PRICE;
-
-        return view("{$this->getRoute()}.create", compact('toggle'))->with('success', trans('notification.create_success', ['model' => trans("{$this->getLang()}.title") . " #{$model->id}"]));
+        return redirect()->route("price.create")
+                        ->with('success', trans('notification.create_success', ['model' => trans("{$this->getLang()}.title") . " #{$model->id}"]));
     }
 
     public function data()

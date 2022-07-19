@@ -49,9 +49,8 @@ Route::controller(PriceController::class)
         ->group(function () {
             Route::get('/{id}/draw', 'reveal')->name('reveal');
             Route::get('/{id}/winner', 'winner')->name('winner');
+
+            Route::get('/create', 'create')->name('create');
+            Route::post('/create', 'store');
         });
 
-Route::any('create', function () {
-    dd("Adsf");
-    return view('event.create');
-});

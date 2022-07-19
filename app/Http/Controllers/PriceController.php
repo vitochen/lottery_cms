@@ -2,21 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Abstracts\BaseController;
+use App\Http\Requests\PriceCreateRequest;
+use App\Http\Requests\PriceUpdateRequest;
 use App\Repositories\Prices;
 use Illuminate\Http\Request;
 
-class PriceController extends Controller
+class PriceController extends BaseController
 {
-    private $prices;
+    protected $repository = Prices::class;
+    protected $route = 'price';
+    protected $view = 'price';
+    protected $lang = 'price';
+    protected $storeRequest = PriceCreateRequest::class;
+    protected $updateRequest = PriceUpdateRequest::class;
 
-    public function __construct(Prices $prices)
+    public function createPrepare(Request $request): array
     {
-        $this->prices = $prices;
+        return $request->only([
+            'name'
+        ]);
+    }
+    
+    public function updatePrepare(Request $request): array
+    {
+        return $request->only([
+            'name'
+        ]);
     }
 
     public function reveal($id)
     {
-        $price = $this->prices->draw($id);
+        $price = $this->repos->draw($id);
 
         $event = $price->event;
 
@@ -25,7 +42,7 @@ class PriceController extends Controller
 
     public function winner($id)
     {
-        $price = $this->prices->firstOf('id', $id);
+        $price = $this->repos->firstOf('id', $id);
 
         $members = $price->winners()->simplePaginate(15);
 
