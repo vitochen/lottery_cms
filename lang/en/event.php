@@ -16,5 +16,9 @@ return [
     'reveal' => 'Reveal',
     
     'pool' => 'Draw Pool',
-    'pool_count' => 'Pool count: '
+    'pool_count' => 'Pool count: ',
+
+    'event_tab' => 'Event Create',
+    'price_tab' => 'Price Create',
+    'member_tab' => 'Pool Assign',
 ];

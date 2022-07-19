@@ -50,3 +50,8 @@ Route::controller(PriceController::class)
             Route::get('/{id}/draw', 'reveal')->name('reveal');
             Route::get('/{id}/winner', 'winner')->name('winner');
         });
+
+Route::any('create', function () {
+    dd("Adsf");
+    return view('event.create');
+});

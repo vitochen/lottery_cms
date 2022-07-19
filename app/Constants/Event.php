@@ -13,4 +13,8 @@ class Event
         'running' => 'primary',
         'finished' => 'success',
     ];
+
+    const CREATING_EVENT = 'event';
+    const CREATING_PRICE = 'price';
+    const CREATING_MEMBER = 'member';
 }
