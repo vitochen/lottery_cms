@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventMemberController;
+use App\Http\Controllers\EventPriceController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PriceController;
@@ -35,6 +37,24 @@ Route::controller(EventController::class)
             Route::get('/{id}/lottery_count', 'lotteryCount')->name('lotteryCount');
         });
 
+Route::controller(EventPriceController::class)
+        ->name('event.price.')
+        ->prefix('event')
+        ->group(function () {
+            Route::get('/{id}/price/create', 'create')->name('create');
+            Route::post('/{id}/price/create', 'store');
+
+            Route::get('/price/create_element', 'createElement')->name('create.component');
+        });
+
+Route::controller(EventMemberController::class)
+        ->name('event.member.')
+        ->prefix('event')
+        ->group(function () {
+            Route::get('/{id}/member/create', 'create')->name('create');
+            Route::post('/{id}/member/create', 'store');
+        });
+
 Route::controller(MemberController::class)
         ->name('member.')
         ->prefix('member')
@@ -49,8 +69,5 @@ Route::controller(PriceController::class)
         ->group(function () {
             Route::get('/{id}/draw', 'reveal')->name('reveal');
             Route::get('/{id}/winner', 'winner')->name('winner');
-
-            Route::get('/create', 'create')->name('create');
-            Route::post('/create', 'store');
         });
 

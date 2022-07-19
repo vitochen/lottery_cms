@@ -12,4 +12,5 @@ return [
     'close' => 'Close',
     'cancel' => 'Cancel',
     'submit' => 'Submit',
+    'skip' => 'Skip',
 ];

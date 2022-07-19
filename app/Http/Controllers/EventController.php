@@ -43,7 +43,7 @@ class EventController extends BaseController
 
         $model = $this->repos->createModel($data);
 
-        return redirect()->route("price.create")
+        return redirect()->route("event.price.create", ['id' => $model->id])
                         ->with('success', trans('notification.create_success', ['model' => trans("{$this->getLang()}.title") . " #{$model->id}"]));
     }
 

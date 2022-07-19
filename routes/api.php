@@ -19,4 +19,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::any('lab', 'App\Http\Controllers\LabController@lab');
+Route::any('lab', 'App\Http\Controllers\LabController@lab')->name('lab');

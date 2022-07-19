@@ -8,6 +8,17 @@
             <form method="POST" action="{{ route('event.create') }}">
                 {{ csrf_field() }}
 
+                <div class="col-md-12 form-group row mt-2">
+                    {!! Form::input('text', 'event_id', $event->id, ['hidden']) !!}
+                    
+                    {!! Form::label(trans('event.name'), null, ['class'=>'col-md-2 col-form-label text-md-end']) !!}
+                    <div class="col-md-9">
+                        {!! Form::input('text', null, $event->name, ['class'=>'form-control', 'readonly']) !!}
+                    </div>
+                </div>
+
+                <hr>
+
                 <div class="form-group row required">
                     {!! Form::label(trans('event.name'), null, ['class'=>'col-md-4 col-form-label text-md-end'])
                     !!}

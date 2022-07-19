@@ -24,6 +24,6 @@ class LabController extends Controller
 
     public function lab()
     {
-        dd(request()->segment(1));
+        dd(request()->route()->getName());
     }
 }
