@@ -1,2 +1,5 @@
 *
 !.gitignore
+!event_intro.png
+!member_intro.png
+!pool_import_sample.xlsx
