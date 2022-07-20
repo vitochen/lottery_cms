@@ -30,4 +30,55 @@ class MemberController extends BaseController
             'name'
         ]);
     }
+
+    public function data()
+    {
+        $query = $this->repos->getQuery();
+
+        $table = $this->prepareQueryTable($query);
+
+        $table->addColumn('joined_event_count', function ($model) {
+            $route = route('member.showEvent', ['id' => $model->id]);
+            $name = $model->joiningEvent->count();
+            
+            if( $name == 0)
+                return $name;
+            else
+                return view('components.linkCol', compact('route', 'name'));
+        });
+
+        $table->addColumn('winned_price_count', function ($model) {
+            $route = route('member.showPrices', ['id' => $model->id]);
+            $name = $model->prices->count();
+            
+            if( $name == 0)
+                return $name;
+            else
+                return view('components.linkCol', compact('route', 'name'));
+        });
+
+        return $this->makeDataTable($table, ['joined_event_count', 'winned_price_count']);
+    }
+
+    public function showEvent($id)
+    {
+        $member = $this->repos->firstOf('id', $id);
+
+        $events = $member->joiningEvent()->simplePaginate(15);
+
+        $title = $member->name . ' # ' . __('member.joined_event');
+
+        return view('member.eventModal', compact('title', 'events'));
+    }
+
+    public function showPrices($id)
+    {
+        $member = $this->repos->firstOf('id', $id);
+
+        $prices = $member->prices()->simplePaginate(15);
+
+        $title = $member->name . ' # ' . __('member.winned_price');
+
+        return view('member.priceModal', compact('title', 'prices'));
+    }
 }

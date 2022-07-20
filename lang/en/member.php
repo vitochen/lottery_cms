@@ -10,4 +10,9 @@ return [
 
     'row' => 'Row',
     'errors' => 'Error Message',
+
+    'joined_event_count' => 'Joined event count',
+    'winned_price_count' => 'Winned price count',
+    'joined_event' => 'Joined event',
+    'winned_price' => 'Winned price',
 ];

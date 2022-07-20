@@ -67,6 +67,9 @@ Route::controller(MemberController::class)
         ->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('/data', 'data')->name('data');
+
+            Route::get('/{id}/joined_event', 'showEvent')->name('showEvent');
+            Route::get('/{id}/wined_price', 'showPrices')->name('showPrices');
         });
 
 Route::controller(PriceController::class)

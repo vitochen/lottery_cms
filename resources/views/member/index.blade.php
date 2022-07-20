@@ -20,17 +20,14 @@
                 <tr>
                     <th>@lang('general.id')</th>
                     <th>@lang('member.name')</th>
+                    <th>@lang('member.joined_event_count')</th>
+                    <th>@lang('member.winned_price_count')</th>
                 </tr>
                 </thead>
             </table>
         </div>
     </div>
 
-    <div class="modal fade" id="question_modal">
-        <div class="modal-dialog">
-            <div class="modal-content" id="question_content"></div>
-        </div>
-    </div>
 @endsection
 
 @section('footer_script')
@@ -57,11 +54,13 @@
                     }
                 },
                 columnDefs: [
-                    {"className": "dt-center", "targets": [0,]}
+                    {"className": "dt-center", "targets": [0, 2, 3]}
                 ],
                 columns: [
                     {data: 'id', name: 'id', width: 30},
                     {data: 'name', name: 'name'},
+                    {data: 'joined_event_count', name: 'joined_event_count', width: 120},
+                    {data: 'winned_price_count', name: 'winned_price_count', width: 120},
                 ]
             });
         });

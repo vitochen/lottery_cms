@@ -10,6 +10,6 @@ class Members extends BaseRepository
     {
         $m = $this->getModel();
 
-        return $m::query();
+        return $m::with('joiningEvent', 'prices');
     }
 }
