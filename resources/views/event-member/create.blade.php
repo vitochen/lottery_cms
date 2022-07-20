@@ -3,7 +3,7 @@
 @section('tab_content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 row">
 
             <div class="col-md-12 form-group row mt-2">
 
@@ -13,22 +13,49 @@
                 </div>
             </div>
 
-            <hr>
+            @if($event->memberPool()->count() > 0)
+            <div class="col-md-8 offset-md-2 ">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">@lang('general.id')</th>
+                            <th scope="col">@lang('member.name')</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($members = $event->memberPool()->simplePaginate(10) as $member)
+                        <tr>
+                            <th>{{ $member->id }}</th>
+                            <td>
+                                {{ $member->name }}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+
+                </table>
+                {{ $members->links() }}
+                <br>
+            </div>
+            
+            @endif
+
+            <hr class="mt-2">
 
             @if (isset($errors) && $errors->any())
-                <table class="table table-danger">
-                    <tr>
-                        <th>@lang('member.row')</th>
-                        <th>@lang('member.errors')</th>
-                    </tr>
+            <table class="table table-danger">
+                <tr>
+                    <th>@lang('member.row')</th>
+                    <th>@lang('member.errors')</th>
+                </tr>
 
-                    @foreach ($errors->all() as $row => $error)
-                        <tr>
-                            <td>{{ $row+1 }}</td>
-                            <td>{{ $error }}</td>
-                        </tr>
-                    @endforeach
-                </table>
+                @foreach ($errors->all() as $row => $error)
+                <tr>
+                    <td>{{ $row+1 }}</td>
+                    <td>{{ $error }}</td>
+                </tr>
+                @endforeach
+            </table>
             @endif
 
             <form action="{{ route('event.member.import', $event->id) }}" method="post" enctype="multipart/form-data">
