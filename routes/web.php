@@ -34,6 +34,9 @@ Route::controller(EventController::class)
             Route::post('/create', 'store');
             Route::get('/{id}/edit', 'edit')->name('edit');
             Route::put('/{id}/edit', 'update');
+            Route::post('/create', 'store');
+            Route::get('/{id}/delete', 'delete')->name('delete');
+            Route::delete('/{id}/delete', 'destroy');
 
             Route::get('/{id}/histroy', 'showPrice')->name('showPrice');
             Route::get('/{id}/pool', 'showPool')->name('showPool');

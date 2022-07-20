@@ -33,7 +33,7 @@ trait BaseDatatable {
             $table = $table->addColumn('del_col', function ($model) use ($routeName) {
                 $id = $model->id;
 
-                return view('components.deleteCol', compact('routeName', 'id'));
+                return view('components.delCol', compact('routeName', 'id'));
             });
 
         return $table;

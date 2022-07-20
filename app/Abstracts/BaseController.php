@@ -146,7 +146,7 @@ abstract class BaseController
     {
         $confirmRoute = route("{$this->getRoute()}.delete", $id);
 
-        return view('backend.layouts.delete', compact('confirmRoute'));
+        return view('components.deleteModal', compact('confirmRoute'));
     }
 
     public function destroy($id)
