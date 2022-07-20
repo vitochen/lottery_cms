@@ -61,6 +61,13 @@
                     {data: 'edit_col', name: 'edit_col', width: 40, sortable: false},
                 ]
             });
+
+
+
+            $(document).on('click', '.fresh_table', function () {
+                table.ajax.reload();
+            });
+
         });
     </script>
 @endsection

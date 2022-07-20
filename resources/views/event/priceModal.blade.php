@@ -38,9 +38,10 @@
                         {{ $price->revealed_at}}
                     @else
                         @include('components.btnCol', [
-                            'style' => App\Constants\Button::$STYLE['warning'], 
+                            'style' => App\Constants\Button::$STYLE['warning'] . ' fresh_table', 
                             'route' => route('price.reveal', ['id' => $price->id]), 
-                            'name' => __('event.reveal')
+                            'name' => __('event.reveal'),
+                            'customAttribute' => 'data-table=""'
                         ])
                     @endif
                 </td>
