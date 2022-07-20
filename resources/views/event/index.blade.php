@@ -20,6 +20,7 @@
                     <th>@lang('general.id')</th>
                     <th>@lang('event.name')</th>
                     <th>@lang('event.status')</th>
+                    <th>@lang('general.edit')</th>
                 </tr>
                 </thead>
             </table>
@@ -51,12 +52,13 @@
                     }
                 },
                 columnDefs: [
-                    {"className": "dt-center", "targets": [0, 2]}
+                    {"className": "dt-center", "targets": [0, 2, 3]}
                 ],
                 columns: [
                     {data: 'id', name: 'id', width: 30},
                     {data: 'name', name: 'name'},
                     {data: 'lottery_status', name: 'lottery_status', width: 200, sortable: false},
+                    {data: 'edit_col', name: 'edit_col', width: 40, sortable: false},
                 ]
             });
         });

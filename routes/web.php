@@ -32,6 +32,8 @@ Route::controller(EventController::class)
             Route::get('/data', 'data')->name('data');
             Route::get('/create', 'create')->name('create');
             Route::post('/create', 'store');
+            Route::get('/{id}/edit', 'edit')->name('edit');
+            Route::put('/{id}/edit', 'update');
 
             Route::get('/{id}/histroy', 'showPrice')->name('showPrice');
             Route::get('/{id}/pool', 'showPool')->name('showPool');

@@ -47,6 +47,20 @@ class EventController extends BaseController
                         ->with('success', trans('notification.create_success', ['model' => trans("{$this->getLang()}.title") . " #{$model->id}"]));
     }
 
+    public function update($id)
+    {
+        $req = $this->getUpdateRequest();
+
+        $request = $req::runFormRequest();
+
+        $data = $this->updatePrepare($request);
+
+        $model = $this->repos->updateModel($id, $data);
+
+        return redirect()->route("event.price.create", ['id' => $model->id])
+                        ->with('success', trans('notification.update_success', ['model' => trans("{$this->getLang()}.title") . " #{$model->id}"]));
+    }
+
     public function data()
     {
         $query = $this->repos->getQuery();
@@ -64,6 +78,20 @@ class EventController extends BaseController
         });
 
         $table = $this->regularColumnPush($table, $this->getRoute());
+
+        $routeName = $this->getRoute();
+        $table = $table->editColumn('edit_col', function ($model) use ($routeName) {
+
+            if($model->lottery_status == Event::UNREVEAL_KEY) {
+                $id = $model->id;            
+                return view('components.editCol', compact('routeName', 'id'));
+            }
+            else {
+                $title = __('event.cant_edit');
+                return view('components.banCol', compact('title'));
+            }
+
+        });
 
         return $this->makeDataTable($table, ['lottery_status']);
     }

@@ -2,10 +2,13 @@
 
 namespace App\Http\Requests;
 
+use App\Traits\RuntimeFormRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
 class EventUpdateRequest extends FormRequest
 {
+    use RuntimeFormRequest;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -13,7 +16,7 @@ class EventUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +27,7 @@ class EventUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255'
         ];
     }
 }

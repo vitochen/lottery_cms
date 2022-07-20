@@ -21,4 +21,6 @@ return [
     'event_tab' => 'Event Create',
     'price_tab' => 'Price Create',
     'member_tab' => 'Pool Assign',
+
+    'cant_edit' => 'Event can not modified after first price run.'
 ];

@@ -38,7 +38,7 @@
     <div class="card-body">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link {{ request()->route()->getName()=='event.create' ? 'active' : 'disabled' }}"
+                <a class="nav-link {{ (request()->route()->getName()=='event.create' || request()->route()->getName()=='event.edit') ? 'active' : 'disabled' }}"
                     id="event-tab" data-toggle="tab" href="#event" role="tab" aria-controls="event"
                     aria-selected="true">
                     <div class="numberCircle">1</div>
